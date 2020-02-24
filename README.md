@@ -78,10 +78,10 @@ we add the following to `package.json`:
 
 ```json
 {
-    scripts: {
-        ...
+    "scripts": {
+        // ...
         "int:extract": "ng xi18n --output-path src/locales",
-        ...
+        // ...
     }
 }
 ```
