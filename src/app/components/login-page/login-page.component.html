@@ -1,0 +1,24 @@
+<div class="full-page">
+  <div id="login-side">
+    <mat-card id="login-form">
+      <img src="../../../assets/shield.svg" alt="logo">
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <mat-form-field appearance="fill">
+          <mat-label>Your Email</mat-label>
+          <input matInput inputmode="email" formControlName="email">
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Your Password</mat-label>
+          <input matInput type="password" formControlName="password">
+        </mat-form-field>
+
+        <br>
+
+        <button mat-raised-button color="primary">Login</button>
+      </form>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+.full-page {
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+
+  background: url(../../../assets/login-bg.jpg);
+  object-fit: contain;
+
+  #login-side {
+    flex-basis: 40%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    #login-form {
+      flex-basis: 70%;
+
+      display: flex;
+      flex-direction: column;
+
+      img {
+        align-self: center;
+        max-height: 5rem;
+        margin-bottom: 5rem;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+}
