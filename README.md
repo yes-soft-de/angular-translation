@@ -4,6 +4,8 @@ Since this blog is about translation and since our main targets markets here at 
 
 *the German Article link
 
+<b>This is the final stage of the `i18n` product, for the `ngx-translate` check `ngx-translate` brach</b>
+
 ## Goals
 
 The goal of this tutorial is building a translated UI from existing one, a demo repository shall be found [here]().
