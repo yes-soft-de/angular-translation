@@ -1,0 +1,10 @@
+{
+  "login": {
+    "email_hint": "Ihre Email",
+    "password_hint": "Ihre Password",
+    "login_btn": "Einloggen"
+  },
+  "dashboard": {
+    "welcome_msg": "Willkommen"
+  }
+}

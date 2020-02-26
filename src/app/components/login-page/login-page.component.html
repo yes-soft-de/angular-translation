@@ -4,20 +4,20 @@
       <img src="../../../assets/shield.svg" alt="logo">
       <form [formGroup]="loginForm" (ngSubmit)="login()">
         <mat-form-field appearance="fill">
-          <mat-label>Your Email</mat-label>
+          <mat-label translate='login.email_hint'></mat-label>
           <input matInput inputmode="email" formControlName="email">
         </mat-form-field>
 
         <br>
 
         <mat-form-field appearance="fill">
-          <mat-label>Your Password</mat-label>
+          <mat-label translate='login.password_hint'></mat-label>
           <input matInput type="password" formControlName="password">
         </mat-form-field>
 
         <br>
 
-        <button mat-raised-button color="primary">Login</button>
+        <button mat-raised-button color="primary"><span translate='login.login_btn'></span></button>
       </form>
     </mat-card>
   </div>

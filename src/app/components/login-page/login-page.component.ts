@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login-page',
@@ -13,7 +14,14 @@ export class LoginPageComponent implements OnInit {
     password: new FormControl()
   });
 
-  constructor(private router: Router) { }
+  translations: {
+    email_hint: string,
+    password_hint: string,
+    login_btn: string
+  };
+
+  constructor(private router: Router, private translateService: TranslateService) {
+  }
 
   ngOnInit() {
   }

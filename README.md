@@ -262,6 +262,178 @@ By the way, use `admin` for both Email and Password to login :).
 
 ## `ngx-translate` 
 
+So in order to start doing this, first we should add a dependency for the translation service and the loader that loads all the translation files,
+
+### Installing the Modules
+
+ it's done with:
+
+```sh
+npm i @ngx-translate/core --save
+npm install @ngx-translate/http-loader --save
+```
+
+Ok, now that we have done it, we should add the `ngx-translate` to the <b>root</b> module of the application, namely `app.module.ts`.
+
+### Importing the Modules
+
+we can do that by adding the lines:
+
+```typescript
+// Make Sure these Dependencies are Imported
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+// And Add This Function
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
+
+// And Add These lines to the dependencies annotation
+@NgModule({
+   imports: [
+       // Add These dependencies
+       // ...
+       	HttpClientModule,
+    	TranslateModule.forRoot({
+      	loader: {
+        	provide: TranslateLoader,
+        	useFactory: HttpLoaderFactory,
+        	deps: [HttpClient]
+      	},
+        // ....
+    }),
+   ] 
+});
+```
+
+### Creating the Translation Service
+
+Under the `assets` folder, we should add a folder `i18n`, in this folder we should add `en.json` and `de.json` files that contains the translations.
+
+#### `en.json`
+
+```json
+{
+    "login": {
+        "email_hint": "Your Email",
+        "input_password_hint": "Your Password",
+        "login_btn": "login"
+    }, "dashboard": {
+        "welcome_msg": "Welcome"
+    }
+}
+```
+
+#### `de.json`
+
+```json
+{
+    "login": {
+        "email_hint": "Ihre Email",
+        "input_password_hint": "Ihre Password",
+        "login_btn": "Einloggen"
+    }, "dashboard": {
+        "welcome_msg": "Willkommen"
+    }
+}
+```
+
+### Using the language files
+
+Now we can use should add the supported languages in the `App` component using:
+
+```typescript
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
+})
+export class AppComponent {
+    title = 'translation-project';
+    constructor(private translate: TranslateService) {
+        translate.addLangs(['en', 'de'])
+    	translate.setDefaultLang('en');
+    	translate.use('en');
+    }
+}	
+```
+
+There are couple of ways we can do, to change the text in the HTML, the easiest of which is using a directive, this way we can avoid making any changes in the `ts` files, making less code complications doing that.
+
+First we need to add a button to change the language, I shall do that in the header like this:
+
+```html
+<mat-toolbar color="white" class="app-header">
+  <img src="https://yes-soft.de/wp-content/themes/yes-soft/img/logo.svg" alt="logo">
+
+  <button mat-button (click)='switchLanguage()'>En/De</button>
+</mat-toolbar>
+```
+
+I shall add the `switchLanguage` as:
+
+```typescript
+  switchLanguage() {
+    if (localStorage.getItem('lang')) {
+      if (localStorage.getItem('lang') === 'en') {
+        this.translationService.use('de');
+      } else {
+        this.translationService.use('en');
+      }
+    } else {
+      this.translationService.use('en');
+    }
+  }
+```
+
+Now we can use the Directive in the Login form as:
+
+```html
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+        <mat-form-field appearance="fill">
+          <mat-label translate='login.email_hint'></mat-label>
+          <input matInput inputmode="email" formControlName="email">
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field appearance="fill">
+          <mat-label translate='login.password_hint'></mat-label>
+          <input matInput type="password" formControlName="password">
+        </mat-form-field>
+
+        <br>
+
+        <button mat-raised-button color="primary"><span translate='login.login_btn'></span></button>
+      </form>
+```
+
+* Note: the directive didn't work directly on the material button, that's why i used a span inside the button.
+
+And we should change the Dashboard Screen as:
+
+```html
+<div id="welcome-container">
+  <h1 translate='dashboard.welcome_msg'></h1>
+</div>
+```
+
+Done, we can try now switching the language from the browser using:
+
+```sh
+ng serve --o
+```
+
+Thanks...
+
+Mohammad Al Kalaleeb.
+
+
+
+ 
+
 
 
 
