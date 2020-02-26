@@ -36,9 +36,9 @@ we have two ways to achieve that, the first is using i18n built-in service. the 
 
 in this tutorial we shall discuss both and compare them to each other.
 
-### about i18n 
+### About i18n 
 
-* used multiple subdomains like: `en.example.com` and `de.example.com`.
+* used in multiple subdomains structure like: `en.example.com` and `de.example.com`.
 * I couldn't get a clear view on how to switch between the languages on the runtime.
 * uses XML format in the `xlf` file format.
 
