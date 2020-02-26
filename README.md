@@ -4,22 +4,6 @@ Since this blog is about translation and since our main targets markets here at 
 
 *the German Article link
 
-## Goals
-
-The goal of this tutorial is building a translated UI from existing one, a demo repository shall be found [here]().
-
-but I will be starting a new project and you can start here with me.
-
-The main goals of this Demo app is to cover these goals:
-
-1. UI based in the geo-origin of the request.
-2. switchable UI language using i18n.
-3. Accept-Header http client, for requesting the correct language from the API.
-
-with that in mind let us start.
-
-
-
 ## UI Designs
 
 for simplicity sake the UI will contain a login page only with a header. and a welcome screen with "Hello world" welcome screen.
@@ -35,7 +19,9 @@ for this project I'm using Angular CLI v8.3.21
 you need to execute 
 
 ```sh
-git clone https://hello.com/iii.git
+git clone https://github.com/yes-soft-de/angular-translation.git
+cd angular-translation
+git checkout start
 ```
 
 ### Installing the Project
@@ -44,7 +30,7 @@ use the command `npm i` on the project directory.
 
 
 
-## Adding the Translation Service
+## Adding the Translation Services
 
 we have two ways to achieve that, the first is using i18n built-in service. the other is using `ngx-translate`.
 
