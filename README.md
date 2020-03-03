@@ -48,7 +48,7 @@ in this tutorial we shall discuss both and compare them to each other.
 * uses `http` interceptor in order for translation.
 * clear and easy `lang_code.json` translation file format.
 
-## i18n
+## `i18n`
 
 ### Adding The Service
 
@@ -69,8 +69,6 @@ we add the following to `package.json`:
     }
 }
 ```
-
-Finally, we add an "id" to the strings we want to translate.
 
 ### Marking Data for Translation
 
@@ -126,7 +124,7 @@ when the command finishes you should see a new directory called `locales` in the
 
 to start translation create one more file with the name `messages.de.xlf` and copy the content of `messages.xlf` into it.
 
-after that use the tag `<target` to specify the translation of that particular text inside that tag.
+after that use the tag `<target>` to specify the translation of that particular text inside that tag.
 
 the final file should look like:
 
@@ -209,7 +207,7 @@ Now in order for us to render that file we should add a configuration to our lit
                     "configurations": {
                         // Some Code
                         "de": {
-                            "browserTarget": "i18n-angular-project:build:en"
+                            "browserTarget": "<project-name>:build:en"
                         }
                     }
                 }
@@ -219,11 +217,11 @@ Now in order for us to render that file we should add a configuration to our lit
 }
 ```
 
-Just add the lines I wrote and <b>Do Not Change anything else</b> in the `angular.json` file.
+Replace `<project-name>` with the Project name that you have
 
 now, we can start serving localized versions of the website by adding another couple of scripts to `package.json` file as follows:
 
-```
+```json
 ...
 "scripts": {
 	"start:de": "ng serve --configuration=de",
@@ -255,8 +253,7 @@ So in order to start doing this, first we should add a dependency for the transl
  it's done with:
 
 ```sh
-npm i @ngx-translate/core --save
-npm install @ngx-translate/http-loader --save
+npm i @ngx-translate/core @ngx-translate/http-loader --save
 ```
 
 Ok, now that we have done it, we should add the `ngx-translate` to the <b>root</b> module of the application, namely `app.module.ts`.
@@ -289,9 +286,6 @@ export function HttpLoaderFactory(http: HttpClient) {
         	deps: [HttpClient]
       	},
         // ....
-    }),
-   ] 
-});
 ```
 
 ### Creating the Translation Service
@@ -348,7 +342,7 @@ export class AppComponent {
 
 There are couple of ways we can do, to change the text in the HTML, the easiest of which is using a directive, this way we can avoid making any changes in the `ts` files, making less code complications doing that.
 
-First we need to add a button to change the language, I shall do that in the header like this:
+### Creating the Language Switch
 
 ```html
 <mat-toolbar color="white" class="app-header">
@@ -374,11 +368,14 @@ I shall add the `switchLanguage` as:
   }
 ```
 
+### Switching Languages in runtime
+
 Now we can use the Directive in the Login form as:
 
 ```html
 <form [formGroup]="loginForm" (ngSubmit)="login()">
         <mat-form-field appearance="fill">
+          <!-- Like This -->
           <mat-label translate='login.email_hint'></mat-label>
           <input matInput inputmode="email" formControlName="email">
         </mat-form-field>
@@ -391,8 +388,8 @@ Now we can use the Directive in the Login form as:
         </mat-form-field>
 
         <br>
-
-        <button mat-raised-button color="primary"><span translate='login.login_btn'></span></button>
+		<!-- Or Like This -->
+        <button mat-raised-button color="primary">{{'login.login_btn' | translate }}</button>
       </form>
 ```
 
