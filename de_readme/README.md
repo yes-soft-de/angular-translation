@@ -1,6 +1,6 @@
 # Angular Übersetzung mit `ngx-translate` und `i18n`
 
-Dieses Blog ist auch im Englisch, Sie kann dieses Blog im dieser [hiere]( https://github.com/yes-soft-de/angular-translation ) finden.
+Dieses Blog ist auch in Englisch, Sie kann dieses Blog im dieser [hiere]( https://github.com/yes-soft-de/angular-translation ) finden.
 
 * English Article Link [here]( https://github.com/yes-soft-de/angular-translation/ )
 
@@ -80,11 +80,11 @@ Wir hinzufügen diese vor `package.json`:
 
 ### Übersetzung Data markieren
 
-Sie kann diese Data markieren via dieses Etikett, z.B. `Ihre Email` und `Ihre Passwort` im dieses Beispiel:
+Sie kann diese Data markieren via dieses Etikett, z.B. `Ihre E-mail` und `Ihre Passwort` im dieses Beispiel:
 
 ```html
 <!-- Add the i18n=".." to the label -->
-<mat-label i18n="@@input-login-email">Your Email</mat-label>
+<mat-label i18n="@@input-login-email">Your E-mail</mat-label>
 <mat-label i18n="@@input-login-password">Your Password</mat-labe>
 ```
 
@@ -104,7 +104,7 @@ und diese Datei verraten im `src/locales` als `messages.xlf`, wir finden in dies
   <file source-language="en" datatype="plaintext" original="ng2.template">
     <body>
       <trans-unit id="input-login-email" datatype="html">
-        <source>Your Email</source>
+        <source>Your E-mail</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/login-page/login-page.component.html</context>
           <context context-type="linenumber">7</context>
@@ -140,13 +140,13 @@ z.B.
   <file source-language="en" datatype="plaintext" original="ng2.template">
     <body>
       <trans-unit id="input-login-email" datatype="html">
-        <source>Your Email</source>
+        <source>Your E-mail</source>
           
           
           
           
         <!-- Notice This Tag, Translation Here -->
-        <target>Ihre Email</target>
+        <target>IhreE-maill</target>
           
           
           
@@ -185,7 +185,7 @@ z.B.
 
 ### Projekt Starten 
 
-wir füge dieses Tag hinzu im `angular.json`
+wir füge dieses Tag hinzu im `angular.json`:
 
 ```json
 {
@@ -243,7 +243,7 @@ und voilà, es ist betreiben und im Deutsch!
 
 Sie kann dieses Projekt finden in dieses Repo Branche [link]( https://github.com/yes-soft-de/angular-translation/tree/start/ ).
 
-und eine letzte Sache, `admin` ist für beide Passwort und Email :).
+und eine letzte Sache, `admin` ist für beide Passwort und E-mail :).
 
 
 
@@ -264,8 +264,6 @@ OK, danach, Sie muss hinzufügen `ngx-translate` und `http-loader` in `app.modul
 ### Importieren Module
 
  Sie muss dieses code importieren in `app.module.ts` wie folgt:
-
-fonksion
 
 ```typescript
 // füge diese hinzu
@@ -301,7 +299,7 @@ im `src/assets/i18n` Sie muss Übersetzen Datei in `json` Format als `en.json` u
 ```json
 {
     "login": {
-        "email_hint": "Your Email",
+        "email_hint": "Your E-mail",
         "input_password_hint": "Your Password",
         "login_btn": "login"
     }, "dashboard": {
@@ -315,7 +313,7 @@ im `src/assets/i18n` Sie muss Übersetzen Datei in `json` Format als `en.json` u
 ```json
 {
     "login": {
-        "email_hint": "Ihre Email",
+        "email_hint": "Ihre E-mail",
         "input_password_hint": "Ihre Password",
         "login_btn": "Einloggen"
     }, "dashboard": {
