@@ -8,6 +8,7 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
@@ -17,10 +18,12 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { registerLocaleData } from '@angular/common';
-import localeDe from '@angular/common/locales/de';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
-registerLocaleData(localeDe, 'de');
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [
@@ -33,6 +36,14 @@ registerLocaleData(localeDe, 'de');
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
     ReactiveFormsModule,
     MatToolbarModule,
     MatCardModule,

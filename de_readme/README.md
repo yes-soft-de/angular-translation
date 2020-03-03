@@ -1,22 +1,20 @@
-# Angular Translation & Localization
+# Angular Übersetzung mit `ngx-translate` und `i18n`
 
-Since this blog is about translation and since our main targets markets here at <b>Yes Soft</b> are German and English speaking developers, this blog will be available in both Deutsch and English. to get the German language please use the like bellow:
+Dieses Blog ist auch im Englisch, Sie kann dieses Blog im dieser [hiere]( https://github.com/yes-soft-de/angular-translation ) finden.
 
-*the German Article link
+## UI Design
 
-## UI Designs
+Für Einfachheit Zweck, wir haben nur 2 Seiten im unsere Website. das ist Anmeldung seit und "Dashboard" seit.
 
-for simplicity sake the UI will contain a login page only with a header. and a welcome screen with "Hello world" welcome screen.
+Sie Kann dieses Repository klonen zur dieses [link]( https://github.com/yes-soft-de/angular-translation).
 
+## Das Start 
 
+in dieser Projekt, wir haben Angular v8.3.21
 
-## Getting Started
+### Klonen
 
-for this project I'm using Angular CLI v8.3.21
-
-### Cloning the Project
-
-you need to execute 
+Sie Kann dieser Repository Klonen via:
 
 ```sh
 git clone https://github.com/yes-soft-de/angular-translation.git
@@ -24,55 +22,63 @@ cd angular-translation
 git checkout start
 ```
 
-### Installing the Project
+### Installation
 
-use the command `npm i` on the project directory.
+wir haben ein Terminal im `angular-translation`, in der Terminal ausführen:
 
+```sh
+npm i
+```
 
+und das ist Alles :).
 
-## Adding the Translation Services
+## Übersetzungsdienste hinzufügen
 
-we have two ways to achieve that, the first is using i18n built-in service. the other is using `ngx-translate`.
+Ok, wir haben 2 Methoden, erste wir will `i18n` machen, und  nächste `ngx-translate`.
 
-in this tutorial we shall discuss both and compare them to each other.
+in dieser Blog, wir werden beide diskutieren.
 
-### About i18n 
+### Über `i18n`
 
-* used in multiple subdomains structure like: `en.example.com` and `de.example.com`.
-* I couldn't get a clear view on how to switch between the languages on the runtime.
-* uses XML format in the `xlf` file format.
+* Wir verwenden dieser Technik in Subdomain Struktur, z.B. `en.example.com` und `de.website.com`.
+* Ich können wechsel zwischen den beiden Sprache nicht im Laufzeit.
+* Dieser Technik verwendet `xlf`  Datei Format.
 
-### About `ngx-translate`
+### Über `ngx-translate`
 
-* simpler to use
-* uses `http` interceptor in order for translation.
-* clear and easy `lang_code.json` translation file format.
+das ist eine dritte Drittanbieter Bibliothek welche behandeln Übersetzung für euch.
+
+* Sehr einfach Verwendung. 
+* Verwendet `http` Abfangjäger für Übersetzung.
+* Einfach `json` Übersetzung Datei Format.
 
 ## `i18n`
 
-### Adding The Service
+### Hinzufügen diese Bedienung
 
-```
+```json
 ng add @angular/localize
 ```
 
-### Shortcut for Extracting Translatable data
+### Abkürzung  für Übersetzbar Data Extraktion
 
-we add the following to `package.json`:
+Wir hinzufügen diese vor `package.json`:
 
 ```json
 {
-    "scripts": {
-        // ...
+    scripts: {
+        \\ ...
         "int:extract": "ng xi18n --output-path src/locales",
-        // ...
+        \\ ...
     }
 }
 ```
 
-### Marking Data for Translation
 
-for instance, if we want to change the lines in the `Login` form from `Your Password` to `Ihre Passwort` we start by changing the label tag to be as follows:
+
+### Übersetzung Data markieren
+
+Sie kann diese Data markieren via dieses Etikett, z.B. `Ihre Email` und `Ihre Passwort` im dieses Beispiel:
 
 ```html
 <!-- Add the i18n=".." to the label -->
@@ -80,15 +86,15 @@ for instance, if we want to change the lines in the `Login` form from `Your Pass
 <mat-label i18n="@@input-login-password">Your Password</mat-labe>
 ```
 
-### Extracting Data to Translation Templates
+### Übersetzung Data Extrakten
 
-in order to generate the translation sheets, first execute:
+Für Data Extrakten, Wir führen aus:
 
 ```sh
 npm run int:extract
 ```
 
-when the command finishes you should see a new directory called `locales` in the `src` folder, inside you should find a file named `messages.xlf` with the content:
+und diese Datei verraten im `src/locales` als `messages.xlf`, wir finden in dieses Datei Dieser Texte:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -117,16 +123,13 @@ when the command finishes you should see a new directory called `locales` in the
     </body>
   </file>
 </xliff>
-
 ```
 
-### Making Translation Sheets
+### Daten übersetzen
 
-to start translation create one more file with the name `messages.de.xlf` and copy the content of `messages.xlf` into it.
+wir fügen dieses Tag hinzu: `<target> übersetzung </target>` im `<trans-unit>` Tag:
 
-after that use the tag `<target>` to specify the translation of that particular text inside that tag.
-
-the final file should look like:
+z.B. 
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -176,14 +179,11 @@ the final file should look like:
     </body>
   </file>
 </xliff>
-
 ```
 
+### Projekt Staren 
 
-
-### Configuring the Project for Translation Service
-
-Now in order for us to render that file we should add a configuration to our little project, now we can do that with editing `angular.json` to use that translation file.
+wir füge dieses Tag hinzu im `angular.json`
 
 ```json
 {
@@ -195,7 +195,7 @@ Now in order for us to render that file we should add a configuration to our lit
                         // Add these Configs
                         "de": {
                             "aot": true,
-                            "outputPath": "dist/ishtar/",
+                            "outputPath": "dist/<Projekt Name>/",
                             "i18nFile": "src/locales/messages.de.xlf",
                             "i18nFormat": "xlf",
                             "i18nLocale": "de",
@@ -207,7 +207,7 @@ Now in order for us to render that file we should add a configuration to our lit
                     "configurations": {
                         // Some Code
                         "de": {
-                            "browserTarget": "<project-name>:build:en"
+                            "browserTarget": "<Project Name>:build:en"
                         }
                     }
                 }
@@ -217,66 +217,68 @@ Now in order for us to render that file we should add a configuration to our lit
 }
 ```
 
-Replace `<project-name>` with the Project name that you have
+ersetzen `<Projekt Name>` mit Ihre Projekt Name.
 
-now, we can start serving localized versions of the website by adding another couple of scripts to `package.json` file as follows:
+und schließlich, wir kann hinzufügen Texte im `package.json`:
 
 ```json
-...
 "scripts": {
 	"start:de": "ng serve --configuration=de",
 }
 ```
 
-### Running Translated Project
+und das ist alles :).
 
-Ok, that's enough for preparation, let us run the thing, to do that we just execute the following:
+### Dieses Projekt starten
+
+wir Kann diese Befehl starten:
 
 ```sh
 npm run start:de
 ```
 
-and voilà, it's running and in German.
+und voilà, es ist betreiben und im Deutsch!
 
-You can find the final product in the `final` branch in GitHub.
+Sie kann dieses Projekt finden in dieses Repo Branch [link]( https://github.com/yes-soft-de/angular-translation/tree/start/ ).
 
-By the way, use `admin` for both Email and Password to login :).
+und eine letzte Sache, `admin` ist für beide Passwort und Email :).
 
 
 
-## `ngx-translate` 
+## `ngx-translate`
 
-So in order to start doing this, first we should add a dependency for the translation service and the loader that loads all the translation files,
+Sie kann dieses Modul verwenden durch hinzufügen `core` und `http-loader`.
 
-### Installing the Modules
+### Hinzufügen Modul
 
- it's done with:
+Sie kann durch dieses Befehl ausführen
 
 ```sh
 npm i @ngx-translate/core @ngx-translate/http-loader --save
 ```
 
-Ok, now that we have done it, we should add the `ngx-translate` to the <b>root</b> module of the application, namely `app.module.ts`.
+OK, danach, Sie muss hinzufügen `ngx-translate` und `http-loader` in `app.module.ts`.
 
-### Importing the Modules
+### Importieren Module
 
-we can do that by adding the lines:
+ Sie muss dieses code importieren in `app.module.ts` wie folgt:
+
+fonksion
 
 ```typescript
-// Make Sure these Dependencies are Imported
+// füge diese hinzu
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
-// And Add This Function
+// und diese funktion
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
 
-// And Add These lines to the dependencies annotation
+// und deise Importe
 @NgModule({
    imports: [
-       // Add These dependencies
        // ...
        	HttpClientModule,
     	TranslateModule.forRoot({
@@ -285,14 +287,14 @@ export function HttpLoaderFactory(http: HttpClient) {
         	useFactory: HttpLoaderFactory,
         	deps: [HttpClient]
       	},
-        // ....
+        // ...
 ```
 
-### Creating the Translation Service
+### Erstellen Übersetzen Datei
 
-Under the `assets` folder, we should add a folder `i18n`, in this folder we should add `en.json` and `de.json` files that contains the translations.
+im `src/assets/i18n` Sie muss Übersetzen Datei in `json` Format als `en.json` und `de.json` und `fr.json` etc.
 
-#### `en.json`
+### z.B. `en.json`
 
 ```json
 {
@@ -306,7 +308,7 @@ Under the `assets` folder, we should add a folder `i18n`, in this folder we shou
 }
 ```
 
-#### `de.json`
+### z.B. `de.json`
 
 ```json
 {
@@ -320,9 +322,9 @@ Under the `assets` folder, we should add a folder `i18n`, in this folder we shou
 }
 ```
 
-### Using the language files
+### Verwendung diese Übersetzen Datei
 
-Now we can use should add the supported languages in the `App` component using:
+erste Sie muss diese Code Linien kopieren in `app.component.ts`:
 
 ```typescript
 @Component({
@@ -337,14 +339,15 @@ export class AppComponent {
     	translate.setDefaultLang('en');
     	translate.use('en');
     }
-}	
+}
 ```
 
-There are couple of ways we can do, to change the text in the HTML, the easiest of which is using a directive, this way we can avoid making any changes in the `ts` files, making less code complications doing that.
+### Erstellen des Sprachwechsel
 
-### Creating the Language Switch
+Sie Kann Ihre Design implementieren, das ist wie ich geschafft:
 
 ```html
+<!-- toolbar -->
 <mat-toolbar color="white" class="app-header">
   <img src="https://yes-soft.de/wp-content/themes/yes-soft/img/logo.svg" alt="logo">
 
@@ -352,7 +355,7 @@ There are couple of ways we can do, to change the text in the HTML, the easiest 
 </mat-toolbar>
 ```
 
-I shall add the `switchLanguage` as:
+und in `toolbar`, ich diese Funktion erstellen:
 
 ```typescript
   switchLanguage() {
@@ -368,14 +371,16 @@ I shall add the `switchLanguage` as:
   }
 ```
 
-### Switching Languages in runtime
+### Sprache wechseln im Anwendungslaufzeit
 
-Now we can use the Directive in the Login form as:
+Sie muss ersetzen Ihre Worte mit den Ort der Übersetzung
+
+z.B.
 
 ```html
 <form [formGroup]="loginForm" (ngSubmit)="login()">
         <mat-form-field appearance="fill">
-          <!-- Like This -->
+          <!-- mit dieses Methode -->
           <mat-label translate='login.email_hint'></mat-label>
           <input matInput inputmode="email" formControlName="email">
         </mat-form-field>
@@ -388,14 +393,13 @@ Now we can use the Directive in the Login form as:
         </mat-form-field>
 
         <br>
-		<!-- Or Like This -->
-        <button mat-raised-button color="primary">{{'login.login_btn' | translate }}</button>
-      </form>
+    	<!-- Oder mit dieses Methode -->
+    	<button mat-raised-button color="primary">{{'login.login_btn' | translate }}</button>
+</form>
+    
 ```
 
-* Note: the directive didn't work directly on the material button, that's why i used a span inside the button.
-
-And we should change the Dashboard Screen as:
+und im `Dashboard`:
 
 ```html
 <div id="welcome-container">
@@ -403,19 +407,17 @@ And we should change the Dashboard Screen as:
 </div>
 ```
 
-Done, we can try now switching the language from the browser using:
+und das ist alles, Sie kann dieses Projekt starten via:
 
 ```sh
 ng serve --o
 ```
 
-Thanks...
+und Sie kann wechseln zwischen Englisch und Deutsch mit Webseiten-Header-Schaltfläche.
 
-Mohammad Al Kalaleeb.
+Vielen Dank
 
-
-
- 
+Mohammad Al Kalaleeb
 
 
 
