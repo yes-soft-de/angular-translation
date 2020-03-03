@@ -2,6 +2,8 @@
 
 Dieses Blog ist auch im Englisch, Sie kann dieses Blog im dieser [hiere]( https://github.com/yes-soft-de/angular-translation ) finden.
 
+* English Article Link [here]( https://github.com/yes-soft-de/angular-translation/ )
+
 ## UI Design
 
 Für Einfachheit Zweck, wir haben nur 2 Seiten im unsere Website. das ist Anmeldung seit und "Dashboard" seit.
@@ -181,7 +183,7 @@ z.B.
 </xliff>
 ```
 
-### Projekt Staren 
+### Projekt Starten 
 
 wir füge dieses Tag hinzu im `angular.json`
 
@@ -239,7 +241,7 @@ npm run start:de
 
 und voilà, es ist betreiben und im Deutsch!
 
-Sie kann dieses Projekt finden in dieses Repo Branch [link]( https://github.com/yes-soft-de/angular-translation/tree/start/ ).
+Sie kann dieses Projekt finden in dieses Repo Branche [link]( https://github.com/yes-soft-de/angular-translation/tree/start/ ).
 
 und eine letzte Sache, `admin` ist für beide Passwort und Email :).
 
