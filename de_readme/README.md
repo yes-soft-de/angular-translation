@@ -263,7 +263,7 @@ OK, danach, Sie muss hinzufügen `ngx-translate` und `http-loader` in `app.modul
 
 ### Importieren Module
 
- Sie muss dieses code importieren in `app.module.ts` wie folgt:
+ Sie muss dieses Code importieren in `app.module.ts` wie folgt:
 
 ```typescript
 // füge diese hinzu

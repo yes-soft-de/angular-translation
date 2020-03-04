@@ -2,7 +2,7 @@
 
 Since this blog is about translation and since our main targets markets here at <b>Yes Soft</b> are German and English speaking developers, this blog will be available in both Deutsch and English. to get the German language please use the like bellow:
 
-* der deutsche Artikel Link [here]( https://github.com/yes-soft-de/angular-translation/tree/master/de_readme )
+* der Deutsche Artikel Link [here]( https://github.com/yes-soft-de/angular-translation/tree/master/de_readme )
 
 
 
